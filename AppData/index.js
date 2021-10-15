@@ -13,6 +13,8 @@ function setup() {
     canvas.elt.onmouseout = () => canvas.isMouseOver = false;
     background(background_colour);
 
+    penBtn.innerText ="Pen Mode"
+
     createP('Background Colour: ').parent('#controls');
     background_colour_picker = createColorPicker(background_colour);
     background_colour_picker.parent('#controls')
@@ -90,9 +92,12 @@ function keyTyped() {
 
         if (current_status) {
             stroke_colour = pen_colour_picker.value();
+            penStatus();
         }
         else {
             stroke_colour = background_colour_picker.value();
+            penStatus();
+
         }
     }
 }
@@ -119,4 +124,12 @@ function backToHome() {
         location.href = "../index.html";
     }
     else { }
+}
+
+function penStatus(){
+    if(current_status == 1)
+        penBtn.innerText ="Pen";
+    else{
+        penBtn.innerText ="Eraser";
+    }
 }
